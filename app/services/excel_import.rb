@@ -1,12 +1,13 @@
 class ExcelImport
-	def self.
+	def self.read_excel_file
 		workbook = RubyXL::Parser.parse("./import/database.xlsx")
 		workbook.worksheets.each do |worksheet|
-	        order_name = worksheet.sheet_name # Name of the worksheet
-	        max_order_id = Order.maximum('orderid') || -1 # Highest orderid in the database (or -1 if no orders exist)
-	        order_id = max_order_id + 1 # New orderid is one more than the current maximum
+	        order_name = worksheet.sheet_name
+	        max_order_id = Order.maximum('orderid') || -1
+	        order_id = max_order_id + 1
 
-	        order = Order.create(orderid: order_id, ordername: order_name)
-	    end
+	        puts "orderid : #{order_id} | order_name = #{order_name}"
+	        order = Order.create(orderid: order_id, odername: order_name)
+		end
 	end
 end

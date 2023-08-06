@@ -1,0 +1,11 @@
+<h1>Home</h1>
+
+<%= form_tag '/import_excel', method: :post do %>
+  <%= submit_tag "Update Database" %>
+<% end %>
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<%= link_to 'View Orders', orders_path, class: 'btn btn-primary' %>
